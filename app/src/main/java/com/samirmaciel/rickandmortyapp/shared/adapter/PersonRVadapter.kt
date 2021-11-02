@@ -21,7 +21,6 @@ class PersonRVadapter : ListAdapter<Person, PersonRVadapter.ViewHolder>(PersonDi
 
         fun bindPerson(person : Person){
             binding.itemPersonName.setText(person.name)
-            binding.itemPersonSpecie.setText(person.species)
 
             Glide.with(binding.personCardView).load(person.image).transition(DrawableTransitionOptions.withCrossFade()).into(binding.itemPersonImage)
 

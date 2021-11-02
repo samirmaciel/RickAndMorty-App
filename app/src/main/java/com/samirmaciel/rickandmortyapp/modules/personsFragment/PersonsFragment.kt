@@ -31,8 +31,28 @@ class PersonsFragment : Fragment(R.layout.fragment_persons) {
                 Location("USA", "Https"),
                 "Masculino",
                 "https://rickandmortyapi.com/api/character/avatar/1.jpeg",
-                arrayOf("S01", "S24")
-            ))
+                arrayOf("S01", "S24")))
+
+             add(Person(2,
+                    "Morty Smith",
+                    "Vivo",
+                    "Humano",
+                    Origin("Terra", "https"),
+                    Location("USA", "Https"),
+                    "Masculino",
+                    "https://rickandmortyapi.com/api/character/avatar/2.jpeg",
+                    arrayOf("S01", "S24")))
+
+                add(Person(3,
+                    "Bepisian",
+                    "Vivo",
+                    "Humano",
+                    Origin("Terra", "https"),
+                    Location("USA", "Https"),
+                    "Masculino",
+                    "https://rickandmortyapi.com/api/character/avatar/35.jpeg",
+                    arrayOf("S01", "S24")))
+
         }
 
         recyclerAdapter.submitList(list)

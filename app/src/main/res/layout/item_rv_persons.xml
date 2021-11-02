@@ -4,11 +4,14 @@
     android:layout_height="wrap_content"
     xmlns:app="http://schemas.android.com/apk/res-auto">
     
-    <com.google.android.material.card.MaterialCardView
+    <androidx.cardview.widget.CardView
         android:id="@+id/personCardView"
-        android:layout_width="200dp"
-        android:layout_height="280dp"
+        android:layout_width="150dp"
+        android:layout_height="230dp"
         app:cardCornerRadius="15dp"
+        app:cardElevation="5dp"
+        android:layout_marginHorizontal="10dp"
+        android:layout_marginVertical="15dp"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -20,29 +23,31 @@
             android:layout_height="match_parent"
             android:orientation="vertical">
 
-            <androidx.appcompat.widget.AppCompatImageView
-                android:id="@+id/itemPersonImage"
+            <com.google.android.material.card.MaterialCardView
                 android:layout_width="match_parent"
-                android:layout_height="200dp"
-                android:src="@drawable/rick_test"/>
+                android:layout_height="wrap_content"
+                app:cardCornerRadius="10dp">
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/itemPersonImage"
+                    android:layout_width="match_parent"
+                    android:scaleType="centerCrop"
+                    android:layout_height="200dp"
+                    android:src="@drawable/rick_test"/>
+
+            </com.google.android.material.card.MaterialCardView>
+
 
             <TextView
                 android:id="@+id/itemPersonName"
-                android:layout_marginTop="16dp"
+                android:fontFamily="@font/baloo2regular"
+                android:layout_marginTop="5dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Person Name"
-                android:textAlignment="center"/>
-
-            <TextView
-                android:id="@+id/itemPersonSpecie"
-                android:layout_marginTop="10dp"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Specie"
+                android:textColor="@color/black"
                 android:textAlignment="center"/>
         </LinearLayout>
 
-    </com.google.android.material.card.MaterialCardView>
+    </androidx.cardview.widget.CardView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
