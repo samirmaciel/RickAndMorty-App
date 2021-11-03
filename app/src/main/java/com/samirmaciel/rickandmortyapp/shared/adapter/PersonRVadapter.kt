@@ -10,16 +10,17 @@ import com.bumptech.glide.Glide
 import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions
 import com.samirmaciel.rickandmortyapp.R
 import com.samirmaciel.rickandmortyapp.databinding.ItemRvPersonsBinding
+import com.samirmaciel.rickandmortyapp.shared.dataStore.model.PersonEntityApi
 import com.samirmaciel.rickandmortyapp.shared.model.Person
 import java.util.zip.Inflater
 
-class PersonRVadapter : ListAdapter<Person, PersonRVadapter.ViewHolder>(PersonDiffUtil()) {
+class PersonRVadapter : ListAdapter<PersonEntityApi, PersonRVadapter.ViewHolder>(PersonDiffUtil()) {
 
 
 
     class ViewHolder(private val binding : ItemRvPersonsBinding) : RecyclerView.ViewHolder(binding.root){
 
-        fun bindPerson(person : Person){
+        fun bindPerson(person : PersonEntityApi){
             binding.itemPersonName.setText(person.name)
 
             Glide.with(binding.personCardView).load(person.image).transition(DrawableTransitionOptions.withCrossFade()).into(binding.itemPersonImage)
@@ -40,12 +41,12 @@ class PersonRVadapter : ListAdapter<Person, PersonRVadapter.ViewHolder>(PersonDi
 
     }
 
-    class PersonDiffUtil : DiffUtil.ItemCallback<Person>() {
-        override fun areItemsTheSame(oldItem: Person, newItem: Person): Boolean {
+    class PersonDiffUtil : DiffUtil.ItemCallback<PersonEntityApi>() {
+        override fun areItemsTheSame(oldItem: PersonEntityApi, newItem: PersonEntityApi): Boolean {
             return oldItem.name == newItem.name
         }
 
-        override fun areContentsTheSame(oldItem: Person, newItem: Person): Boolean {
+        override fun areContentsTheSame(oldItem: PersonEntityApi, newItem: PersonEntityApi): Boolean {
             return oldItem.name == newItem.name
         }
     }

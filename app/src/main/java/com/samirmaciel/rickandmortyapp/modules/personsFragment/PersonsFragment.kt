@@ -1,12 +1,16 @@
 package com.samirmaciel.rickandmortyapp.modules.personsFragment
 
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.activityViewModels
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.samirmaciel.rickandmortyapp.R
 import com.samirmaciel.rickandmortyapp.databinding.FragmentPersonsBinding
 import com.samirmaciel.rickandmortyapp.shared.adapter.PersonRVadapter
+import com.samirmaciel.rickandmortyapp.shared.dataStore.model.ApiService
+import com.samirmaciel.rickandmortyapp.shared.dataStore.model.RepositoryApi
 import com.samirmaciel.rickandmortyapp.shared.model.Location
 import com.samirmaciel.rickandmortyapp.shared.model.Origin
 import com.samirmaciel.rickandmortyapp.shared.model.Person
@@ -17,6 +21,9 @@ class PersonsFragment : Fragment(R.layout.fragment_persons) {
     private val binding : FragmentPersonsBinding get() = _binding!!
     lateinit var recyclerAdapter : PersonRVadapter
 
+    private val viewModel : PersonsFragmentViewModel by activityViewModels{
+        PersonsFragmentViewModel.ViewModelFactory(ApiService.getInstance().create(RepositoryApi::class.java))
+    }
 
     override fun onResume() {
         super.onResume()
@@ -55,12 +62,21 @@ class PersonsFragment : Fragment(R.layout.fragment_persons) {
 
         }
 
-        recyclerAdapter.submitList(list)
+        viewModel.listPersons.observe(this){
+            Log.d("DANY", "onResume: " + it.size)
+            recyclerAdapter.submitList(it)
+        }
+
+
+
+
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         _binding = FragmentPersonsBinding.bind(view)
+
+
     }
 
 
