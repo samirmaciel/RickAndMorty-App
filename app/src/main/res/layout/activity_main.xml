@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/white"
+    android:background="@color/yellow"
     tools:context=".MainActivity">
 
     <ImageView
@@ -21,11 +21,34 @@
     <androidx.fragment.app.FragmentContainerView
         android:id="@+id/fragmentHost"
         android:name="androidx.navigation.fragment.NavHostFragment"
-        app:navGraph ="@navigation/main_navigation"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toTopOf="@id/episodesTitle"
+        app:layout_constraintTop_toBottomOf="@+id/logoTitle"
+        app:navGraph="@navigation/main_navigation" />
+
+
+    <TextView
+        android:id="@+id/episodesTitle"
+        android:textAlignment="center"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:text="@string/title_episodes"
+        android:fontFamily="@font/baloo2semibold"
+        android:textColor="@color/black"
+        android:textSize="20sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/view"/>
+
+    <View
+        android:id="@+id/view"
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
         app:layout_constraintBottom_toTopOf="@id/rvEpisodes"
-        app:layout_constraintTop_toBottomOf="@id/logoTitle"/>
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:background="@color/black"/>
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rvEpisodes"
